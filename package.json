@@ -2,7 +2,7 @@
   "name": "cpu-usage-graph",
   "displayName": "SHOW-CPU-GRAPH",
   "description": "Show cpu usage graph in the activity bar",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "nvidia-monitor",
   "icon": "logo.png",
   "repository": {
@@ -24,7 +24,7 @@
       "activitybar": [
         {
           "type": "webview",
-          "id": "gpuUsageGraph",
+          "id": "cpuUsageGraph",
           "name": "CPU Graph"
         }
       ]
