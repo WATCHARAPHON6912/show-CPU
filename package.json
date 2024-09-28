@@ -1,10 +1,14 @@
 {
-  "name": "gpu-usage-graph",
-  "displayName": "GPU Usage Graph",
-  "description": "Show GPU usage graph in the activity bar",
+  "name": "cpu-usage-graph",
+  "displayName": "SHOW-CPU-GRAPH",
+  "description": "Show cpu usage graph in the activity bar",
   "version": "0.0.1",
   "publisher": "nvidia-monitor",
   "icon": "logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WATCHARAPHON6912/show-CPU"
+  },
   "engines": {
     "vscode": "^1.60.0"
   },
