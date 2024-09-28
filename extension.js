@@ -16,7 +16,7 @@ function activate(context) {
 }
 
 class GPUUsageViewProvider {
-    static viewType = 'gpuUsageGraph';
+    static viewType = 'cpuUsageGraph';
     constructor(extensionUri) {
         this._extensionUri = extensionUri;
         this.currentData = {};
