@@ -85,29 +85,30 @@ class GPUUsageViewProvider {
             return;
         }
 
-        exec(nvidiaCommand, (error, stdout, stderr) => {
-            if (error) {
-                console.error(`Error executing nvidia-smi: ${stderr}`);
-                this.currentData.device = 'Error';
-                this.currentData.GpuUsage = 'Error';
-                this.currentData.memoryUsage = 'Error';
-                this.currentData.temperature = 'Error';
-            } else {
-                const lines = stdout.trim().split('\n');
-                if (lines.length > 0) {
-                    const [device, usage, memoryUsed, memoryTotal, temperature] = lines[0].split(', ');
-                    this.currentData.device = `${device}`;
-                    this.currentData.GpuUsage = `${usage}`;
-                    this.currentData.memoryUsage = `${(memoryUsed/ 1024).toFixed(2)}`;
-                    this.currentData.memoryTotal = `${(memoryTotal/ 1024).toFixed(2)}`;
-                    this.currentData.temperature = `${temperature}°C`;
-                } else {
-                    this.currentData.device = 'N/A';
-                    this.currentData.GpuUsage = 'N/A';
-                    this.currentData.memoryUsage = 'N/A';
-                    this.currentData.temperature = 'N/A';
-                }
-            }
+        // exec(nvidiaCommand, (error, stdout, stderr) => {
+        //     if (error) {
+        //         console.error(`Error executing nvidia-smi: ${stderr}`);
+        //         this.currentData.device = 'Error';
+        //         this.currentData.GpuUsage = 'Error';
+        //         this.currentData.memoryUsage = 'Error';
+        //         this.currentData.temperature = 'Error';
+        //     } else {
+        //         const lines = stdout.trim().split('\n');
+        //         if (lines.length > 0) {
+        //             const [device, usage, memoryUsed, memoryTotal, temperature] = lines[0].split(', ');
+        //             this.currentData.device = `${device}`;
+        //             this.currentData.GpuUsage = `${usage}`;
+        //             this.currentData.memoryUsage = `${(memoryUsed/ 1024).toFixed(2)}`;
+        //             this.currentData.memoryTotal = `${(memoryTotal/ 1024).toFixed(2)}`;
+        //             this.currentData.temperature = `${temperature}°C`;
+        //         } else {
+        //             this.currentData.device = 'N/A';
+        //             this.currentData.GpuUsage = 'N/A';
+        //             this.currentData.memoryUsage = 'N/A';
+        //             this.currentData.temperature = 'N/A';
+        //         }
+        //     }
+        // });
 
             exec(cpuCommand, (error, stdout, stderr) => {
                 if(platform === 'win32'){
@@ -149,7 +150,7 @@ class GPUUsageViewProvider {
                 this._onDidChangeTreeData.fire(); // อัปเดต tree view
                 });
             });
-        });
+       
 
         return [
             // [this.currentData.memoryUsage,this.currentData.memoryTotal],
